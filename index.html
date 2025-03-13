@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="/streamsaver/StreamSaver.js"></script>
+    <script type="module">
+        const uInt8 = new TextEncoder().encode('StreamSaver is awesome')
+
+        const fileStream = window.streamSaver.createWriteStream('______FILE.txt', {
+            size: uInt8.byteLength, // (optional filesize) Will show progress
+            writableStrategy: undefined, // (optional)
+            readableStrategy: undefined  // (optional)
+        })
+
+        const writer = fileStream.getWriter()
+        writer.write(uInt8)
+        writer.close()
+    </script>
+</head>
+<body>
+    Hello World
+</body>
+</html>
